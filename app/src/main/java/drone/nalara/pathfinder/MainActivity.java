@@ -18,6 +18,7 @@ import drone.nalara.pathfinder.R;
 import drone.nalara.pathfinder.com.ROSClient;
 import drone.nalara.pathfinder.net.xxhong.rosclient.RCApplication;
 import drone.nalara.pathfinder.com.rosbridge.ROSBridgeClient;
+import drone.nalara.pathfinder.net.xxhong.rosclient.ui.NodesActivity;
 
 public class MainActivity extends AppCompatActivity {
 // static final int REQ_CODE_OVERLAY_PERMISSION = 88;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void connect(String ip, String port) {
         client = new ROSBridgeClient("ws://" + ip + ":" + port);
-        Toast.makeText(MainActivity.this, "haha",Toast.LENGTH_SHORT).show();
         boolean conneSucc = client.connect(new ROSClient.ConnectionStatusListener() {
 
             @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 ((RCApplication) getApplication()).setRosClient(client);
                 showTip("Connect ROS success");
                 Log.d(TAG, "Connect ROS success");
-                startActivity(new Intent(MainActivity.this, MapActivity.class));
+                startActivity(new Intent(MainActivity.this, drone.nalara.pathfinder.net.xxhong.rosclient.ui.NodesActivity.class));
             }
 
             @Override
@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.tv_ros:
                 break;
             case R.id.btn_connect:
-                Toast.makeText(getApplicationContext(), "dd", Toast.LENGTH_LONG);
                 String ip = etIP.getText().toString();
                 String port = etPort.getText().toString();
                 connect(ip, port);

@@ -3,6 +3,7 @@ package drone.nalara.pathfinder;
 import android.*;
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -105,6 +106,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public  void onBackButtonClicked(View v){
         finish();
+    }
+
+    public void onTest(View v){
+        startActivity(new Intent(MapActivity.this, drone.nalara.pathfinder.net.xxhong.rosclient.ui.NodesActivity.class));
     }
 
     public void GPSClicked(View v){
